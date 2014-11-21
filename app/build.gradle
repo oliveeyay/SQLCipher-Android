@@ -1,0 +1,43 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.0.0"
+
+    defaultConfig {
+        applicationId "com.sqlcipher.oliviergoutay.sqlcipher_android"
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'commons-codec:commons-codec:1.5'
+    compile 'com.google.guava:guava:12.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.2'
+}
+
+artifacts {
+    archives file('build/outputs/aar/app.aar')
+}
+
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri("../../og-maven/release"))
+            pom.groupId = 'com.sqlcipher.oliviergoutay'
+            pom.artifactId = 'sqlcipher_android'
+            pom.version = '1.0.0'
+        }
+    }
+}
