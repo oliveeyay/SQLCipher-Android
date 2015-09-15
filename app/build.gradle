@@ -1,14 +1,14 @@
 apply plugin: 'android-library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdkVersion 23
         versionCode 2
-        versionName "1.1.0"
+        versionName "3.3.1"
     }
     buildTypes {
         release {
@@ -32,10 +32,10 @@ apply plugin: 'maven'
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: uri("../../og-maven/release"))
+            repository(url: uri("../../omada-nexus/release"))
             pom.groupId = 'com.sqlcipher.oliviergoutay'
             pom.artifactId = 'sqlcipher_android'
-            pom.version = '1.1.0'
+            pom.version = '3.3.1'
         }
     }
 }
